@@ -45,3 +45,6 @@ management:
 logging:
   level:
     io.opentelemetry.*: ERROR
+
+kafka:
+  bootstrap-server: localhost:9094
