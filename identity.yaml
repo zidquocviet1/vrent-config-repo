@@ -2,7 +2,5 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: Identity Service
   jmx:
     enabled: true
