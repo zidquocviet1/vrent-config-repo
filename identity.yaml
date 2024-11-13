@@ -1,0 +1,47 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Identity Service
+  jmx:
+    enabled: true
+
+otel:
+  resource:
+    attributes:
+      deployment.environment: local
+      service:
+        name: identity
+        namespace: services
+  instrumentation:
+    micrometer:
+      enabled: on
+  exporter:
+    otlp:
+      protocol: grpc
+      traces:
+        timeout: 30000
+  metric:
+    export:
+      interval: 10000
+  metrics:
+    exporter: otlp
+
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+
+logging:
+  level:
+    io.opentelemetry.*: ERROR
