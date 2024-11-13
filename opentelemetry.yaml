@@ -1,0 +1,20 @@
+otel:
+  resource:
+    attributes:
+      deployment.environment: local
+      service:
+        name: identity
+        namespace: services
+  instrumentation:
+    micrometer:
+      enabled: on
+  exporter:
+    otlp:
+      protocol: grpc
+      traces:
+        timeout: 30000
+  metric:
+    export:
+      interval: 10000
+  metrics:
+    exporter: otlp
